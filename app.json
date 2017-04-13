@@ -1,0 +1,13 @@
+{
+  "name": "Fake News Detector",
+  "description": "A backend that analyzes article and evaluates correctness",
+  "keywords": [
+    "fake",
+    "news",
+    "python"
+  ],
+  "repository": "https://github.com/yefim/flask-heroku-sample",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
