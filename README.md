@@ -1,9 +1,7 @@
-Flask Heroku Sample
-====================
+NewsCheck - Fake News Detector
+==============================
 
-A simple Python Flask example application that's ready to run on Heroku.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+A simple Python Flask application that detects fake news.
 
 ## Development Setup
 
@@ -23,6 +21,3 @@ A simple Python Flask example application that's ready to run on Heroku.
 
 * `git push heroku master`
 
-## Contributors
-
-* [Yefim](https://twitter.com/yefim)
