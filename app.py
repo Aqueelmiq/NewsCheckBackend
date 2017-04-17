@@ -7,7 +7,11 @@ from firebase import firebase
 
 from flask import Flask, jsonify, json, request
 
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
+
 grammar_base = "https://languagetool.org/api/v2/check"
 
 
