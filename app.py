@@ -59,7 +59,7 @@ def check():
         else:
             score = (score/2) + (userRating['score']/2)
 
-    print(score)
+    score = score + not_recommended(url)
 
     if score >= 7:
         status = "This news and source is trustworthy"
@@ -72,6 +72,15 @@ def check():
 
     return jsonify(data={'score': score, 'suggestion': status})
 
+
+#From Parser.py
+def not_recommended(url):
+    # Assigns a not_recommended score to a url
+    # Check for known urls
+    if 'com.co' in url:
+        return -2
+
+    return 0
 
 def getRatings(url):
 
@@ -99,8 +108,8 @@ def registerFeedback():
 
     url = request.json['url']
     feedback = request.json['feedback']
+    fireUrl = '/userfeedback'
 
-    checkuri = url
     url = url.replace('http://', '')
     url = url.replace('https://', '')
     url = url.replace('www.', '')
@@ -114,12 +123,11 @@ def registerFeedback():
         score = rating['score']*n
         score += feedback
         rating['score'] = score/(n+1)
+        fireUrl = fireUrl + "/" + key
+        fire.patch(fireUrl, rating)
     else:
         rating = {'reviews': 1, 'score': feedback, 'url': url}
-
-    fireUrl = '/userfeedback'
-    
-    fire.post(fireUrl, rating)
+        fire.post(fireUrl, rating)
 
     return jsonify(data=rating)
 
